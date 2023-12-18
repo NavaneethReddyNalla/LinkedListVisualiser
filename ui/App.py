@@ -1,5 +1,7 @@
 import tkinter as tk
 
+from .components import *
+
 
 class App(tk.Tk):
     def __init__(self, title: str = "App", minsize: tuple = (500, 500)):
@@ -7,11 +9,11 @@ class App(tk.Tk):
         self.title(title)
         self.minsize(*minsize)
 
-        self.main_frame = tk.Frame(self)
+        self.main_frame = frame(self)
         self.main_frame.pack(fill='both', expand=True, side='top')
 
-        self.main_frame.grid_rowconfigure(0, weight=1)
-        self.main_frame.grid_columnconfigure(0, weight=1)
+        self.canvas = canvas(self.main_frame)
+        self.canvas.pack(fill="both", expand=True, side="top")
 
     def run(self):
         self.mainloop()
