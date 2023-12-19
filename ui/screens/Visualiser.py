@@ -24,8 +24,10 @@ class Visualiser(Frame):
 
         self.create_buttons(control_frame)
 
-    def create_buttons(self, control_frame):
-        pass
+    @staticmethod
+    def create_buttons(control_frame):
+        insert_beg = button(control_frame, "Insert Begin")
+        insert_beg.pack(side="left", expand=True, fill="both", padx=5, pady=5)
 
     def styles(self):
         self['background'] = "black"
