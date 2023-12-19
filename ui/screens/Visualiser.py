@@ -22,6 +22,11 @@ class Visualiser(Frame):
         # control_frame.pack(fill="both", expand=True, side="top")
         control_frame.grid(row=3, column=0, sticky="nsew")
 
+        self.create_buttons(control_frame)
+
+    def create_buttons(self, control_frame):
+        pass
+
     def styles(self):
         self['background'] = "black"
 
