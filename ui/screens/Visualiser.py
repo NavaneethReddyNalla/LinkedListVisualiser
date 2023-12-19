@@ -15,12 +15,11 @@ class Visualiser(Frame):
         self.configure_grid()
 
         draw_area = canvas(self)
-        # draw_area.pack(fill='both', expand=True, side="top")
         draw_area.grid(row=0, column=0, rowspan=3, sticky="nsew")
 
         control_frame = frame(self)
-        # control_frame.pack(fill="both", expand=True, side="top")
         control_frame.grid(row=3, column=0, sticky="nsew")
+        # control_frame.pack_propagate(False)
 
         self.create_buttons(control_frame)
 
