@@ -1,4 +1,2 @@
-from . import __frame__, __canvas__
-
-frame = __frame__.frame
-canvas = __canvas__.canvas
+from .__frame__ import frame
+from .__canvas__ import canvas

@@ -1,6 +1,7 @@
 import tkinter as tk
 
 from .components import *
+from .screens import *
 
 
 class App(tk.Tk):
@@ -12,8 +13,8 @@ class App(tk.Tk):
         self.main_frame = frame(self)
         self.main_frame.pack(fill='both', expand=True, side='top')
 
-        self.canvas = canvas(self.main_frame)
-        self.canvas.pack(fill="both", expand=True, side="top")
+        self.frames = {}
+        self.frame_keys = (Visualiser, )
 
     def run(self):
         self.mainloop()
