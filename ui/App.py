@@ -16,5 +16,10 @@ class App(tk.Tk):
         self.frames = {}
         self.frame_keys = (Visualiser, )
 
+        for one_frame in self.frame_keys:
+            new_frame = one_frame(self.main_frame, self)
+            self.frames[one_frame] = new_frame
+            new_frame.pack(fill="both", expand=True, side="top")
+
     def run(self):
         self.mainloop()
