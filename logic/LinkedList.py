@@ -13,3 +13,6 @@ class LinkedList:
             new_node.next = self.head
             self.head.prev = new_node
             self.head = new_node
+
+    def delete_begin(self) -> None:
+        self.head = self.head.next
