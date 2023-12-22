@@ -3,6 +3,7 @@ def draw_node(canvas, node):
     rect_coords = (coords[0], coords[1], coords[0] + 50, coords[1] + 50)
     node.id = canvas.create_rectangle(*rect_coords, fill="black")
     node.data_id = canvas.create_text(coords[0] + 25, coords[1] + 25, text=f"{node.data}", fill="white")
+    node.arrow_id = canvas.create_line(coords[0] + 50, coords[1] + 25, coords[0] + 100, coords[1] + 25)
 
 
 # This function became useless after completing the animation with only one node
