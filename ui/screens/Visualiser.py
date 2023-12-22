@@ -1,6 +1,7 @@
 from tkinter import Frame
 
 from logic.LinkedList import LinkedList
+from logic.Node import Node
 from .util import *
 from ..components import *
 
@@ -46,6 +47,7 @@ class Visualiser(Frame):
 
     def begin_insert(self):
         self.nodes += 1
-        self.linked_list.insert_begin(self.nodes)
+        node = Node(self.nodes)
+        self.linked_list.insert_begin(node)
 
         draw_linked_list(self.draw_area, self.linked_list)
