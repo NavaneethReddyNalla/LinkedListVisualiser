@@ -1,3 +1,6 @@
+def draw_node(canvas, node):
+    pass
+
 def draw_linked_list(canvas, linked_list):
     current = linked_list.head
     coords = [50, 150]
