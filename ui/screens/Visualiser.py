@@ -48,6 +48,8 @@ class Visualiser(Frame):
     def begin_insert(self):
         self.nodes += 1
         node = Node(self.nodes)
-        self.linked_list.insert_begin(node)
 
-        draw_linked_list(self.draw_area, self.linked_list)
+        draw_node(self.draw_area, node)
+        move_node_to(self.draw_area, node, 50, 150)
+
+        self.linked_list.insert_begin(node)

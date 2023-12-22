@@ -1,5 +1,9 @@
 def draw_node(canvas, node):
-    pass
+    coords = [50, 0]
+    rect_coords = (coords[0], coords[1], coords[0] + 50, coords[1] + 50)
+    node.id = canvas.create_rectangle(*rect_coords, fill="black")
+    node.data_id = canvas.create_text(coords[0] + 25, coords[1] + 25, text=f"{node.data}", fill="white")
+
 
 def draw_linked_list(canvas, linked_list):
     current = linked_list.head
