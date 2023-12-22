@@ -50,6 +50,9 @@ class Visualiser(Frame):
         node = Node(self.nodes)
 
         draw_node(self.draw_area, node)
+
+        if self.linked_list.head:
+            shift_list(self.draw_area, self.linked_list.head)
         move_node_to(self.draw_area, node, 50, 150)
 
         self.linked_list.insert_begin(node)
