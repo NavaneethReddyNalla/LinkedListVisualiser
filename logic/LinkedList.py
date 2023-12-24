@@ -35,8 +35,11 @@ class LinkedList:
             self.length -= 1
             self.head = self.head.next
 
+            if self.head:
+                self.head.prev = None
+
     def delete_end(self) -> None:
-        if not len(self):
+        if len(self) == 0:
             return None
 
         self.length -= 1
@@ -45,7 +48,7 @@ class LinkedList:
         while curr.next:
             curr = curr.next
 
-        if len(self) > 1:
+        if curr.prev:
             curr.prev.next = None
             curr.prev = None
         else:
@@ -53,3 +56,13 @@ class LinkedList:
 
     def __len__(self):
         return self.length
+
+    def __str__(self):
+        nodes = []
+
+        curr = self.head
+        while curr:
+            nodes.append(str(curr.data))
+            curr = curr.next
+
+        return "->".join(nodes)

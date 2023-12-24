@@ -13,6 +13,7 @@ class Visualiser(Frame):
         self.controller = controller
         self.draw_area = canvas(self)
         self.linked_list = LinkedList()
+        self.buttons = {}
 
         self.create_widgets()
         self.styles()
@@ -39,14 +40,21 @@ class Visualiser(Frame):
         insert_pos = button(control_frame, "Insert at Position", command=None)
         insert_pos.grid(row=0, column=2, sticky="nsew", padx=5, pady=5)
 
-        delete_begin = button(control_frame, "Delete Begin", command=self.begin_delete)
-        delete_begin.grid(row=1, column=0, sticky="nsew", padx=5, pady=5)
+        delete_beg = button(control_frame, "Delete Begin", command=self.begin_delete)
+        delete_beg.grid(row=1, column=0, sticky="nsew", padx=5, pady=5)
 
         delete_end = button(control_frame, "Delete End", command=self.end_delete)
         delete_end.grid(row=1, column=1, sticky="nsew", padx=5, pady=5)
 
         delete_pos = button(control_frame, "Delete At Position", command=None)
         delete_pos.grid(row=1, column=2, sticky="nsew", padx=5, pady=5)
+
+        self.buttons['insert_beg'] = insert_beg
+        self.buttons['insert_end'] = insert_end
+        self.buttons['insert_pos'] = insert_pos
+        self.buttons['delete_beg'] = delete_beg
+        self.buttons['delete_end'] = delete_end
+        self.buttons['delete_pos'] = delete_pos
 
     def styles(self):
         self['background'] = "black"
@@ -62,6 +70,7 @@ class Visualiser(Frame):
             self.columnconfigure(i, weight=1)
 
     def begin_insert(self):
+        self.toggle_button_state()
         self.nodes += 1
         node = Node(self.nodes)
 
@@ -72,8 +81,11 @@ class Visualiser(Frame):
         move_node_to(self.draw_area, node, 50, 150)
 
         self.linked_list.insert_begin(node)
+        self.toggle_button_state()
+        print(str(self.linked_list), len(self.linked_list))
 
     def end_insert(self):
+        self.toggle_button_state()
         self.nodes += 1
         node = Node(self.nodes)
 
@@ -83,15 +95,25 @@ class Visualiser(Frame):
         move_node_to(self.draw_area, node, 50 + 100 * len(self.linked_list), 150)
 
         self.linked_list.insert_end(node)
+        self.toggle_button_state()
+        print(str(self.linked_list), len(self.linked_list))
 
     def begin_delete(self):
+        print(str(self.linked_list), len(self.linked_list))
+        self.toggle_button_state()
+
         if len(self.linked_list):
             un_draw_node(self.draw_area, self.linked_list.head)
             shift_list(self.draw_area, self.linked_list.head.next, step=-1)
 
         self.linked_list.delete_begin()
+        self.toggle_button_state()
+        print(str(self.linked_list), len(self.linked_list))
 
     def end_delete(self):
+        print(str(self.linked_list), len(self.linked_list))
+        self.toggle_button_state()
+
         if len(self.linked_list):
             delete_node = self.linked_list.head
 
@@ -101,3 +123,14 @@ class Visualiser(Frame):
             un_draw_node(self.draw_area, delete_node)
 
             self.linked_list.delete_end()
+
+        self.toggle_button_state()
+        print(str(self.linked_list), len(self.linked_list))
+
+    def toggle_button_state(self):
+        if self.buttons['insert_beg']['state'] == "normal":
+            for _button in self.buttons:
+                self.buttons[_button]["state"] = "disabled"
+        else:
+            for _button in self.buttons:
+                self.buttons[_button]["state"] = "normal"
