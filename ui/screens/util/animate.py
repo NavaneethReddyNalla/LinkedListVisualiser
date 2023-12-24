@@ -44,21 +44,21 @@ def shift_list(canvas, linked_list_start, step=1):
         sleep(1 / FPS)
         canvas.update()
 
-    while curr:
-        current_coords = canvas.coords(curr.id)
-        text_coords = canvas.coords(curr.data_id)
-        current_coords[0] += step * step_size
-        current_coords[2] += step * step_size
-        text_coords[0] += step * step_size
-
-        canvas.coords(curr.id, *current_coords)
-        canvas.coords(curr.data_id, *text_coords)
-        canvas.coords(
-            curr.arrow_id,
-            current_coords[0] + 50,
-            current_coords[1] + 25,
-            current_coords[0] + 100,
-            current_coords[1] + 25
-        )
-
-        curr = curr.next
+    # while curr:
+    #     current_coords = canvas.coords(curr.id)
+    #     text_coords = canvas.coords(curr.data_id)
+    #     current_coords[0] += step * step_size
+    #     current_coords[2] += step * step_size
+    #     text_coords[0] += step * step_size
+    #
+    #     canvas.coords(curr.id, *current_coords)
+    #     canvas.coords(curr.data_id, *text_coords)
+    #     canvas.coords(
+    #         curr.arrow_id,
+    #         current_coords[0] + 50,
+    #         current_coords[1] + 25,
+    #         current_coords[0] + 100,
+    #         current_coords[1] + 25
+    #     )
+    #
+    #     curr = curr.next
