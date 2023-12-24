@@ -7,6 +7,9 @@ def draw_node(canvas, node):
     node.arrow_id = canvas.create_line(*arrow_coords, arrow="last", arrowshape=(7, 10, 5))
 
 
+def un_draw_node(canvas, node):
+    canvas.delete(node.id, node.data_id, node.arrow_id)
+
 # This function became useless after completing the animation with only one node
 # def draw_linked_list(canvas, linked_list):
 #     current = linked_list.head
