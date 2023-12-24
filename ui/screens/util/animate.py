@@ -25,6 +25,9 @@ def move_node_to(canvas, node, x, y):
 
 
 def shift_list(canvas, linked_list_start, step=1):
+    if linked_list_start is None:
+        return None
+
     step_size = 100
     delx = step * step_size
     curr = None
