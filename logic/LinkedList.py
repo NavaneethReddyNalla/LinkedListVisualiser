@@ -31,8 +31,25 @@ class LinkedList:
             node.prev = curr
 
     def delete_begin(self) -> None:
+        if len(self):
+            self.length -= 1
+            self.head = self.head.next
+
+    def delete_end(self) -> None:
+        if not len(self):
+            return None
+
         self.length -= 1
-        self.head = self.head.next
+
+        curr = self.head
+        while curr.next:
+            curr = curr.next
+
+        if len(self) > 1:
+            curr.prev.next = None
+            curr.prev = None
+        else:
+            self.head = None
 
     def __len__(self):
         return self.length

@@ -42,7 +42,7 @@ class Visualiser(Frame):
         delete_begin = button(control_frame, "Delete Begin", command=self.begin_delete)
         delete_begin.grid(row=1, column=0, sticky="nsew", padx=5, pady=5)
 
-        delete_end = button(control_frame, "Delete End", command=None)
+        delete_end = button(control_frame, "Delete End", command=self.end_delete)
         delete_end.grid(row=1, column=1, sticky="nsew", padx=5, pady=5)
 
         delete_pos = button(control_frame, "Delete At Position", command=None)
@@ -85,7 +85,19 @@ class Visualiser(Frame):
         self.linked_list.insert_end(node)
 
     def begin_delete(self):
-        un_draw_node(self.draw_area, self.linked_list.head)
-        shift_list(self.draw_area, self.linked_list.head.next, step=-1)
+        if len(self.linked_list):
+            un_draw_node(self.draw_area, self.linked_list.head)
+            shift_list(self.draw_area, self.linked_list.head.next, step=-1)
 
         self.linked_list.delete_begin()
+
+    def end_delete(self):
+        if len(self.linked_list):
+            delete_node = self.linked_list.head
+
+            while delete_node.next:
+                delete_node = delete_node.next
+
+            un_draw_node(self.draw_area, delete_node)
+
+            self.linked_list.delete_end()
