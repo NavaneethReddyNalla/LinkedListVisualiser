@@ -9,6 +9,9 @@ def move_node_to(canvas, node, x, y):
     delx = x - current_coords[0]
     dely = y - current_coords[1]
 
+    if delx == 0 and dely == 0:
+        return None
+
     for i in range(FPS):
         canvas.move(node.id, delx / FPS, dely / FPS)
         canvas.move(node.data_id, delx / FPS, dely / FPS)
