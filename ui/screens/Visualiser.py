@@ -80,7 +80,7 @@ class Visualiser(Frame):
         draw_node(self.draw_area, node)
 
         move_node_to(self.draw_area, node, 50 + 100 * len(self.linked_list), 0)
-        move_node_to(self.draw_area, node, 40 + 100 * len(self.linked_list), 150)
+        move_node_to(self.draw_area, node, 50 + 100 * len(self.linked_list), 150)
 
         self.linked_list.insert_end(node)
 

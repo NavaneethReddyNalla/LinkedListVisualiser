@@ -57,3 +57,5 @@ def shift_list(canvas, linked_list_start, step=1):
             current_coords[0] + 100,
             current_coords[1] + 25
         )
+
+        curr = curr.next
