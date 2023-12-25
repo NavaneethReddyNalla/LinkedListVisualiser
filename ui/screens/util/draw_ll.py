@@ -1,5 +1,5 @@
 def draw_node(canvas, node):
-    coords = [50, 0]
+    coords = [50, 10]
     arrow_coords = [coords[0] + 50, coords[1] + 25, coords[0] + 100, coords[1] + 25]
     rect_coords = (coords[0], coords[1], coords[0] + 50, coords[1] + 50)
     node.id = canvas.create_rectangle(*rect_coords, fill="black")
