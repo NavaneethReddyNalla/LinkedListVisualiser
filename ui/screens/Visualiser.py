@@ -47,7 +47,7 @@ class Visualiser(Frame):
         insert_end = button(control_frame, "Insert End", command=self.end_insert)
         insert_end.grid(row=0, column=1, sticky="nsew", padx=5, pady=5)
 
-        insert_pos = button(control_frame, "Insert at Position", command=None)
+        insert_pos = button(control_frame, "Insert at Position", command=self.pos_insert)
         insert_pos.grid(row=0, column=2, sticky="nsew", padx=5, pady=5)
 
         delete_beg = button(control_frame, "Delete Begin", command=self.begin_delete)
@@ -56,7 +56,7 @@ class Visualiser(Frame):
         delete_end = button(control_frame, "Delete End", command=self.end_delete)
         delete_end.grid(row=1, column=1, sticky="nsew", padx=5, pady=5)
 
-        delete_pos = button(control_frame, "Delete At Position", command=None)
+        delete_pos = button(control_frame, "Delete At Position", command=self.pos_delete)
         delete_pos.grid(row=1, column=2, sticky="nsew", padx=5, pady=5)
 
         self.buttons['insert_beg'] = insert_beg
@@ -108,6 +108,11 @@ class Visualiser(Frame):
         self.toggle_button_state()
         self.adjust_scroll_region()
 
+    def pos_insert(self):
+        self.toggle_button_state()
+
+        self.toggle_button_state()
+
     def begin_delete(self):
         self.toggle_button_state()
 
@@ -134,6 +139,10 @@ class Visualiser(Frame):
 
         self.toggle_button_state()
         self.adjust_scroll_region()
+
+    def pos_delete(self):
+        self.toggle_button_state()
+        self.toggle_button_state()
 
     def toggle_button_state(self):
         if self.buttons['insert_beg']['state'] == "normal":
