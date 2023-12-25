@@ -144,6 +144,5 @@ class Visualiser(Frame):
                 self.buttons[_button]["state"] = "normal"
 
     def adjust_scroll_region(self):
-        print(self.draw_area.bbox("all"))
         # self.draw_area.config(scrollregion=self.draw_area.bbox("all"))
         self.draw_area.config(scrollregion=(0, 0, (len(self.linked_list) + 1) * 100, 500))
