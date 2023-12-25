@@ -29,7 +29,7 @@ class Visualiser(Frame):
         self.draw_area.pack(expand=True, fill="both", side="top")
 
         scrollbar = Scrollbar(self.draw_frame, orient=HORIZONTAL, command=self.draw_area.xview)
-        scrollbar.pack(expand=True, fill="x", side="top")
+        scrollbar.pack(fill="x", side="top")
 
         self.draw_area.config(xscrollcommand=scrollbar.set)
 
@@ -145,4 +145,5 @@ class Visualiser(Frame):
 
     def adjust_scroll_region(self):
         print(self.draw_area.bbox("all"))
-        self.draw_area.config(scrollregion=self.draw_area.bbox("all"))
+        # self.draw_area.config(scrollregion=self.draw_area.bbox("all"))
+        self.draw_area.config(scrollregion=(0, 0, (len(self.linked_list) + 1) * 100, 500))
