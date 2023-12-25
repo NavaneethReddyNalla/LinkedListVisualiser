@@ -1,4 +1,7 @@
 from tkinter import Frame
+from tkinter import Scrollbar
+
+from tkinter import HORIZONTAL
 
 from logic.LinkedList import LinkedList
 from logic.Node import Node
@@ -11,7 +14,8 @@ class Visualiser(Frame):
         super().__init__(parent, *args, **kwargs)
         self.nodes = 0
         self.controller = controller
-        self.draw_area = canvas(self)
+        self.draw_frame = frame(self)
+        self.draw_area = canvas(self.draw_frame)
         self.linked_list = LinkedList()
         self.buttons = {}
 
@@ -21,7 +25,13 @@ class Visualiser(Frame):
     def create_widgets(self):
         self.configure_grid()
 
-        self.draw_area.grid(row=0, column=0, rowspan=3, sticky="nsew")
+        self.draw_frame.grid(row=0, column=0, rowspan=3, sticky="nsew")
+        self.draw_area.pack(expand=True, fill="both", side="top")
+
+        scrollbar = Scrollbar(self.draw_frame, orient=HORIZONTAL, command=self.draw_area.xview)
+        scrollbar.pack(expand=True, fill="x", side="top")
+
+        self.draw_area.config(xscrollcommand=scrollbar.set)
 
         control_frame = frame(self, grid=(3, 3))
         control_frame.grid(row=3, column=0, sticky="nsew", padx=10)
@@ -82,7 +92,7 @@ class Visualiser(Frame):
 
         self.linked_list.insert_begin(node)
         self.toggle_button_state()
-        print(str(self.linked_list), len(self.linked_list))
+        self.adjust_scroll_region()
 
     def end_insert(self):
         self.toggle_button_state()
@@ -96,10 +106,9 @@ class Visualiser(Frame):
 
         self.linked_list.insert_end(node)
         self.toggle_button_state()
-        print(str(self.linked_list), len(self.linked_list))
+        self.adjust_scroll_region()
 
     def begin_delete(self):
-        print(str(self.linked_list), len(self.linked_list))
         self.toggle_button_state()
 
         if len(self.linked_list):
@@ -108,10 +117,9 @@ class Visualiser(Frame):
 
         self.linked_list.delete_begin()
         self.toggle_button_state()
-        print(str(self.linked_list), len(self.linked_list))
+        self.adjust_scroll_region()
 
     def end_delete(self):
-        print(str(self.linked_list), len(self.linked_list))
         self.toggle_button_state()
 
         if len(self.linked_list):
@@ -125,7 +133,7 @@ class Visualiser(Frame):
             self.linked_list.delete_end()
 
         self.toggle_button_state()
-        print(str(self.linked_list), len(self.linked_list))
+        self.adjust_scroll_region()
 
     def toggle_button_state(self):
         if self.buttons['insert_beg']['state'] == "normal":
@@ -134,3 +142,7 @@ class Visualiser(Frame):
         else:
             for _button in self.buttons:
                 self.buttons[_button]["state"] = "normal"
+
+    def adjust_scroll_region(self):
+        print(self.draw_area.bbox("all"))
+        self.draw_area.config(scrollregion=self.draw_area.bbox("all"))
