@@ -3,7 +3,7 @@ from logic.LinkedList import LinkedList
 
 
 class Selector:
-    def __init__(self, canvas: Canvas, linked_list: LinkedList, deletion: bool = False):
+    def __init__(self, canvas: Canvas, linked_list: LinkedList, toggle_func, deletion: bool = False):
         self.canvas = canvas
         self.linked_list = linked_list
         self.boxes = []
@@ -22,5 +22,7 @@ class Selector:
 
             id = self.canvas.create_rectangle(*coords, outline="blue", activefill=fill, width=5)
             self.boxes.append(id)
+
+            self.canvas.tag_bind(id, "<Button>", lambda event: print(event.x))
 
             curr = curr.next

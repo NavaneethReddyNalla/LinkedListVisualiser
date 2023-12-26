@@ -110,8 +110,7 @@ class Visualiser(Frame):
 
     def pos_insert(self):
         self.toggle_button_state()
-        Selector(self.draw_area, self.linked_list)
-        self.toggle_button_state()
+        Selector(self.draw_area, self.linked_list, self.toggle_button_state)
 
     def begin_delete(self):
         self.toggle_button_state()
