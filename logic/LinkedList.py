@@ -17,6 +17,8 @@ class LinkedList:
             self.head = node
 
     def insert_pos(self, node: Node, pos_data=None):
+        self.length += 1
+
         if self.head is None or pos_data is None:
             self.insert_begin(node)
         else:
