@@ -6,3 +6,4 @@ class Node:
         self.id: int | None = None
         self.data_id: int | None = None
         self.arrow_id: int | None = None
+        self.select_id: int | None = None

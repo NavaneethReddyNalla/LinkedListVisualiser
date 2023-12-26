@@ -47,7 +47,7 @@ class Visualiser(Frame):
         insert_end = button(control_frame, "Insert End", command=self.end_insert)
         insert_end.grid(row=0, column=1, sticky="nsew", padx=5, pady=5)
 
-        insert_pos = button(control_frame, "Insert at Position", command=self.pos_insert)
+        insert_pos = button(control_frame, "Insert at Position", command=self.select_node)
         insert_pos.grid(row=0, column=2, sticky="nsew", padx=5, pady=5)
 
         delete_beg = button(control_frame, "Delete Begin", command=self.begin_delete)
@@ -56,7 +56,7 @@ class Visualiser(Frame):
         delete_end = button(control_frame, "Delete End", command=self.end_delete)
         delete_end.grid(row=1, column=1, sticky="nsew", padx=5, pady=5)
 
-        delete_pos = button(control_frame, "Delete At Position", command=self.pos_delete)
+        delete_pos = button(control_frame, "Delete At Position", command=lambda: self.select_node(deletion=True))
         delete_pos.grid(row=1, column=2, sticky="nsew", padx=5, pady=5)
 
         self.buttons['insert_beg'] = insert_beg
@@ -108,9 +108,27 @@ class Visualiser(Frame):
         self.toggle_button_state()
         self.adjust_scroll_region()
 
-    def pos_insert(self):
+    def select_node(self, deletion=False):
         self.toggle_button_state()
-        Selector(self.draw_area, self.linked_list, self.toggle_button_state)
+        Selector(self, deletion=deletion)
+
+    def pos_insert(self, node: Node):
+        self.nodes += 1
+        new_node = Node(self.nodes)
+
+        draw_node(self.draw_area, new_node)
+
+        x_node = self.draw_area.coords(node.id)[0]
+        y_node = self.draw_area.coords(node.id)[1]
+
+        move_node_to(self.draw_area, new_node, x_node, 10)
+        shift_list(self.draw_area, node)
+        move_node_to(self.draw_area, new_node, x_node, y_node)
+
+        self.linked_list.insert_pos(new_node, node.data)
+        print(str(self.linked_list))
+        self.toggle_button_state()
+        self.adjust_scroll_region()
 
     def begin_delete(self):
         self.toggle_button_state()
@@ -139,7 +157,7 @@ class Visualiser(Frame):
         self.toggle_button_state()
         self.adjust_scroll_region()
 
-    def pos_delete(self):
+    def pos_delete(self, node: Node):
         self.toggle_button_state()
         self.toggle_button_state()
 

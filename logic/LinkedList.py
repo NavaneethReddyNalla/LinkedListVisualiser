@@ -16,6 +16,23 @@ class LinkedList:
             self.head.prev = node
             self.head = node
 
+    def insert_pos(self, node: Node, pos_data=None):
+        if self.head is None or pos_data is None:
+            self.insert_begin(node)
+        else:
+            curr = self.head
+
+            while curr.next and curr.data != pos_data:
+                curr = curr.next
+
+            node.next = curr
+            node.prev = curr.prev
+            curr.prev = node
+            if node.prev:
+                node.prev.next = node
+            else:
+                self.head = node
+
     def insert_end(self, node: Node) -> None:
         self.length += 1
 
