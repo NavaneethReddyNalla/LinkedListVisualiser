@@ -33,8 +33,9 @@ class Selector:
 
         while curr:
             box_coords = self.canvas.coords(curr.id)
+            x, y = self.canvas.canvasx(event.x), self.canvas.canvasy(event.y)
 
-            if self.check_point(event.x, event.y, box_coords):
+            if self.check_point(x, y, box_coords):
                 self.delete_selections()
                 self.screen.pos_insert(curr)
                 break

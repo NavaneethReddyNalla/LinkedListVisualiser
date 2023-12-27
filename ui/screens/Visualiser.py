@@ -126,7 +126,6 @@ class Visualiser(Frame):
         move_node_to(self.draw_area, new_node, x_node, y_node)
 
         self.linked_list.insert_pos(new_node, node.data)
-        print(str(self.linked_list))
         self.toggle_button_state()
         self.adjust_scroll_region()
 
