@@ -85,7 +85,7 @@ class LinkedList:
             curr = curr.next
 
         if curr == self.head:
-            self.head = None
+            self.head = self.head.next
         elif curr.prev:
             if curr.next:
                 curr.next.prev = curr.prev
