@@ -133,8 +133,9 @@ class Visualiser(Frame):
         self.toggle_button_state()
 
         if len(self.linked_list):
-            un_draw_node(self.draw_area, self.linked_list.head)
+            move_node_to(self.draw_area, self.linked_list.head, 50, 10)
             shift_list(self.draw_area, self.linked_list.head.next, step=-1)
+            un_draw_node(self.draw_area, self.linked_list.head)
 
         self.linked_list.delete_begin()
         self.toggle_button_state()
@@ -149,6 +150,9 @@ class Visualiser(Frame):
             while delete_node.next:
                 delete_node = delete_node.next
 
+            curr_x = self.draw_area.coords(delete_node.id)[0]
+
+            move_node_to(self.draw_area, delete_node, curr_x, 10)
             un_draw_node(self.draw_area, delete_node)
 
             self.linked_list.delete_end()
