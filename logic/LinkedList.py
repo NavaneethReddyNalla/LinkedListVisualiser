@@ -73,6 +73,27 @@ class LinkedList:
         else:
             self.head = None
 
+    def delete_pos(self, data: int) -> None:
+        if len(self) == 0:
+            return None
+
+        self.length -= 1
+
+        curr = self.head
+
+        while curr.data != data:
+            curr = curr.next
+
+        if curr == self.head:
+            self.head = None
+        elif curr.prev:
+            if curr.next:
+                curr.next.prev = curr.prev
+            curr.prev.next = curr.next
+        else:
+            self.head = curr.next
+            self.head.prev = None
+
     def __len__(self):
         return self.length
 

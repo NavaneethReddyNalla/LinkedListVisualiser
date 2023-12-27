@@ -37,7 +37,11 @@ class Selector:
 
             if self.check_point(x, y, box_coords):
                 self.delete_selections()
-                self.screen.pos_insert(curr)
+
+                if not self.deletion:
+                    self.screen.pos_insert(curr)
+                else:
+                    self.screen.pos_delete(curr)
                 break
 
             curr = curr.next

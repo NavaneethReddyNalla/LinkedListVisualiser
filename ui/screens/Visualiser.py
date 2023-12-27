@@ -157,8 +157,15 @@ class Visualiser(Frame):
         self.adjust_scroll_region()
 
     def pos_delete(self, node: Node):
+        current_x = self.draw_area.coords(node.id)[0]
+
+        move_node_to(self.draw_area, node, current_x, 10)
+        shift_list(self.draw_area, node.next, step=-1)
+        un_draw_node(self.draw_area, node)
+
+        self.linked_list.delete_pos(node.data)
         self.toggle_button_state()
-        self.toggle_button_state()
+        self.adjust_scroll_region()
 
     def toggle_button_state(self):
         if self.buttons['insert_beg']['state'] == "normal":
