@@ -53,7 +53,4 @@ class Selector:
 
     @staticmethod
     def check_point(x, y, box_coords):
-        if box_coords[0] <= x <= box_coords[2] and box_coords[1] <= y <= box_coords[3]:
-            return True
-
-        return False
+        return box_coords[0] <= x <= box_coords[2] and box_coords[1] <= y <= box_coords[3]
