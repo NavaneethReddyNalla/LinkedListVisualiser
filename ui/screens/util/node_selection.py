@@ -1,6 +1,3 @@
-from logic.LinkedList import LinkedList
-
-
 class Selector:
     def __init__(self, screen, deletion: bool = False):
         self.screen = screen
