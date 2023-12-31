@@ -30,7 +30,6 @@ def shift_list(canvas, linked_list_start, step=1):
 
     step_size = 100
     delx = step * step_size
-    curr = None
 
     for i in range(FPS):
         curr = linked_list_start
