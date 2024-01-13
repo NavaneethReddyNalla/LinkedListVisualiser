@@ -1,6 +1,6 @@
 PRIMARY_COLORS = {
     "frame": "#5438DC",
-    "canvas": "#DBD5B5",
+    "canvas": "#FCDFA6",
     "node": "#2B9EB3",
     "data": "white",
     "bg-label": "#5438DC",
