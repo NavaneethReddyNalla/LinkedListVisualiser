@@ -27,10 +27,11 @@ class Visualiser(Frame):
     def create_widgets(self):
         self.configure_grid()
 
-        heading = Label(self, text="Linked List Visualizer", font=("Helvetica", 16, "bold"), background="black",fg="white")
+        heading = Label(self, text="Linked List Visualizer", font=("Helvetica", 16, "bold"), background="black",
+                        fg="white")
         heading.grid(row=0, column=0, columnspan=3, sticky="new")
 
-        self.draw_area.create_text(75, 220,font=("Helvetica", 14, "bold"), text="Start", fill="black")
+        self.draw_area.create_text(75, 220, font=("Helvetica", 14, "bold"), text="Start", fill="black")
 
         self.draw_frame.grid(row=0, column=0, rowspan=3, sticky="nsew")
         self.draw_area.pack(expand=True, fill="both", side="top")
