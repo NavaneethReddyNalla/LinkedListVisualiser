@@ -1,9 +1,12 @@
+from ui.styles import *
+
+
 def draw_node(canvas, node):
     coords = [50, 10]
     arrow_coords = [coords[0] + 50, coords[1] + 25, coords[0] + 100, coords[1] + 25]
     rect_coords = (coords[0], coords[1], coords[0] + 50, coords[1] + 50)
-    node.id = canvas.create_rectangle(*rect_coords, fill="black")
-    node.data_id = canvas.create_text(coords[0] + 25, coords[1] + 25, text=f"{node.data}", fill="white")
+    node.id = canvas.create_rectangle(*rect_coords, fill=PRIMARY_COLORS["node"])
+    node.data_id = canvas.create_text(coords[0] + 25, coords[1] + 25, text=f"{node.data}", fill=PRIMARY_COLORS["data"])
     node.arrow_id = canvas.create_line(*arrow_coords, arrow="last", arrowshape=(7, 10, 5))
 
 

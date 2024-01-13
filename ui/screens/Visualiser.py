@@ -9,6 +9,7 @@ from logic.LinkedList import LinkedList
 from logic.Node import Node
 from .util import *
 from ..components import *
+from ..styles import *
 
 
 class Visualiser(Frame):
@@ -29,7 +30,7 @@ class Visualiser(Frame):
 
         heading = Label(self, text="Linked List Visualizer", font=("Helvetica", 16, "bold"), background="black",
                         fg="white")
-        heading.grid(row=0, column=0, columnspan=3, sticky="new")
+        heading.grid(row=0, column=0, sticky="new")
 
         self.draw_area.create_text(75, 220, font=("Helvetica", 14, "bold"), text="Start", fill="black")
 
@@ -75,7 +76,7 @@ class Visualiser(Frame):
         self.buttons['delete_pos'] = delete_pos
 
     def styles(self):
-        self['background'] = "black"
+        self['background'] = PRIMARY_COLORS["frame"]
 
     def configure_grid(self):
         for i in range(4):
