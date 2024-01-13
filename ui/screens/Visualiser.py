@@ -20,7 +20,6 @@ class Visualiser(Frame):
         self.draw_area = canvas(self.draw_frame)
         self.linked_list = LinkedList()
         self.buttons = {}
-        self.heading = None
 
         self.create_widgets()
         self.styles()
@@ -28,8 +27,8 @@ class Visualiser(Frame):
     def create_widgets(self):
         self.configure_grid()
 
-        self.heading = Label(self, text="Linked List Visualizer", font=("Helvetica", 16, "bold"), background="black",fg="white")
-        self.heading.grid(row=0, column=0, columnspan=3, sticky="new")
+        heading = Label(self, text="Linked List Visualizer", font=("Helvetica", 16, "bold"), background="black",fg="white")
+        heading.grid(row=0, column=0, columnspan=3, sticky="new")
 
         self.draw_area.create_text(75, 220,font=("Helvetica", 14, "bold"), text="Start", fill="black")
 
