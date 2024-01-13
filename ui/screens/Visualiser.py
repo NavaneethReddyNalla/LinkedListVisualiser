@@ -52,21 +52,27 @@ class Visualiser(Frame):
         insert_beg = button(control_frame, "Insert Begin", command=self.begin_insert)
         # insert_beg.pack(side="left", expand=True, fill="both", padx=5, pady=5) # not using pack for more control
         insert_beg.grid(row=0, column=0, sticky="nsew", padx=5, pady=5)
+        insert_beg["background"] = PRIMARY_COLORS["btn_success"]
 
         insert_end = button(control_frame, "Insert End", command=self.end_insert)
         insert_end.grid(row=0, column=1, sticky="nsew", padx=5, pady=5)
+        insert_end["background"] = PRIMARY_COLORS["btn_success"]
 
         insert_pos = button(control_frame, "Insert at Position", command=self.select_node)
         insert_pos.grid(row=0, column=2, sticky="nsew", padx=5, pady=5)
+        insert_pos["background"] = PRIMARY_COLORS["btn_success"]
 
         delete_beg = button(control_frame, "Delete Begin", command=self.begin_delete)
         delete_beg.grid(row=1, column=0, sticky="nsew", padx=5, pady=5)
+        delete_beg["background"] = PRIMARY_COLORS["btn_danger"]
 
         delete_end = button(control_frame, "Delete End", command=self.end_delete)
         delete_end.grid(row=1, column=1, sticky="nsew", padx=5, pady=5)
+        delete_end["background"] = PRIMARY_COLORS["btn_danger"]
 
         delete_pos = button(control_frame, "Delete At Position", command=lambda: self.select_node(deletion=True))
         delete_pos.grid(row=1, column=2, sticky="nsew", padx=5, pady=5)
+        delete_pos["background"] = PRIMARY_COLORS["btn_danger"]
 
         self.buttons['insert_beg'] = insert_beg
         self.buttons['insert_end'] = insert_end
