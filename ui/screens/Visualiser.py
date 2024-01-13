@@ -12,6 +12,11 @@ from ..components import *
 from ..styles import *
 
 
+LEFT_PAD = 50
+LINE_Y = 200
+TOP_PAD = 150
+
+
 class Visualiser(Frame):
     def __init__(self, parent, controller, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
@@ -33,7 +38,7 @@ class Visualiser(Frame):
                         fg="white")
         heading.grid(row=0, column=0, sticky="new")
 
-        self.draw_area.create_text(75, 220, font=("Helvetica", 14, "bold"), text="Start", fill="black")
+        self.draw_area.create_text(75, 270, font=("Helvetica", 14, "bold"), text="Start", fill="black")
 
         self.draw_frame.grid(row=0, column=0, rowspan=3, sticky="nsew")
         self.draw_area.pack(expand=True, fill="both", side="top")
@@ -100,11 +105,11 @@ class Visualiser(Frame):
         self.nodes += 1
         node = Node(self.nodes)
 
-        draw_node(self.draw_area, node)
+        draw_node(self.draw_area, node, coords=[LEFT_PAD, LINE_Y - TOP_PAD])
 
         if self.linked_list.head:
             shift_list(self.draw_area, self.linked_list.head)
-        move_node_to(self.draw_area, node, 50, 150)
+        move_node_to(self.draw_area, node, LEFT_PAD, LINE_Y)
 
         self.linked_list.insert_begin(node)
         self.toggle_button_state()
@@ -115,10 +120,10 @@ class Visualiser(Frame):
         self.nodes += 1
         node = Node(self.nodes)
 
-        draw_node(self.draw_area, node)
+        draw_node(self.draw_area, node, coords=[LEFT_PAD, LINE_Y - TOP_PAD])
 
-        move_node_to(self.draw_area, node, 50 + 100 * len(self.linked_list), 10)
-        move_node_to(self.draw_area, node, 50 + 100 * len(self.linked_list), 150)
+        move_node_to(self.draw_area, node, LEFT_PAD + 100 * len(self.linked_list), LINE_Y - TOP_PAD)
+        move_node_to(self.draw_area, node, LEFT_PAD + 100 * len(self.linked_list), LINE_Y)
 
         self.linked_list.insert_end(node)
         self.toggle_button_state()
@@ -132,12 +137,12 @@ class Visualiser(Frame):
         self.nodes += 1
         new_node = Node(self.nodes)
 
-        draw_node(self.draw_area, new_node)
+        draw_node(self.draw_area, new_node, coords=[LEFT_PAD, LINE_Y - TOP_PAD])
 
         x_node = self.draw_area.coords(node.id)[0]
         y_node = self.draw_area.coords(node.id)[1]
 
-        move_node_to(self.draw_area, new_node, x_node, 10)
+        move_node_to(self.draw_area, new_node, x_node, LINE_Y - TOP_PAD)
         shift_list(self.draw_area, node)
         move_node_to(self.draw_area, new_node, x_node, y_node)
 
@@ -149,7 +154,7 @@ class Visualiser(Frame):
         self.toggle_button_state()
 
         if len(self.linked_list):
-            move_node_to(self.draw_area, self.linked_list.head, 50, 10)
+            move_node_to(self.draw_area, self.linked_list.head, LEFT_PAD, LINE_Y - TOP_PAD)
             shift_list(self.draw_area, self.linked_list.head.next, step=-1)
             un_draw_node(self.draw_area, self.linked_list.head)
 
@@ -168,7 +173,7 @@ class Visualiser(Frame):
 
             curr_x = self.draw_area.coords(delete_node.id)[0]
 
-            move_node_to(self.draw_area, delete_node, curr_x, 10)
+            move_node_to(self.draw_area, delete_node, curr_x, LINE_Y - TOP_PAD)
             un_draw_node(self.draw_area, delete_node)
 
             self.linked_list.delete_end()
@@ -179,7 +184,7 @@ class Visualiser(Frame):
     def pos_delete(self, node: Node):
         current_x = self.draw_area.coords(node.id)[0]
 
-        move_node_to(self.draw_area, node, current_x, 10)
+        move_node_to(self.draw_area, node, current_x, LINE_Y - TOP_PAD)
         shift_list(self.draw_area, node.next, step=-1)
         un_draw_node(self.draw_area, node)
 
