@@ -29,7 +29,7 @@ class Visualiser(Frame):
         self.configure_grid()
 
         heading = Label(self, text="Linked List Visualizer", font=("Helvetica", 16, "bold"),
-                        background=PRIMARY_COLORS["bg-normal"],
+                        background=PRIMARY_COLORS["bg-label"],
                         fg="white")
         heading.grid(row=0, column=0, sticky="new")
 
