@@ -16,7 +16,7 @@ class App(tk.Tk):
         self.main_frame.pack(fill='both', expand=True, side='top')
 
         self.frames = {}
-        self.frame_keys = (MainMenu, Visualiser)
+        self.frame_keys = (MainMenu, Visualizer)
 
         self.create_frames()
         self.show_page(MainMenu)
@@ -30,6 +30,10 @@ class App(tk.Tk):
     def destroy_frames(self):
         for f in self.frame_keys:
             self.frames[f].destroy()
+
+    def close(self):
+        self.destroy_frames()
+        self.destroy()
 
     def show_page(self, page):
         if page == MainMenu:

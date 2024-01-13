@@ -17,7 +17,7 @@ LINE_Y = 200
 TOP_PAD = 150
 
 
-class Visualiser(Frame):
+class Visualizer(Frame):
     def __init__(self, parent, controller, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
         self.nodes = 0

@@ -1,2 +1,2 @@
-from .Visualiser import Visualiser
+from .Visualizer import Visualizer
 from .MainMenu import MainMenu

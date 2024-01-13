@@ -2,8 +2,8 @@ PRIMARY_COLORS = {
     # Frames
     "frame": "#5438DC",
 
-    #Canvas
-    "canvas": "#FCDFA6",
+    # Canvas
+    "canvas": "white",
 
     # Nodes
     "node": "#2B9EB3",
