@@ -28,7 +28,8 @@ class Visualiser(Frame):
     def create_widgets(self):
         self.configure_grid()
 
-        heading = Label(self, text="Linked List Visualizer", font=("Helvetica", 16, "bold"), background="black",
+        heading = Label(self, text="Linked List Visualizer", font=("Helvetica", 16, "bold"),
+                        background=PRIMARY_COLORS["bg-normal"],
                         fg="white")
         heading.grid(row=0, column=0, sticky="new")
 
