@@ -3,7 +3,7 @@ from tkinter import messagebox
 
 from ..components import *
 from ..styles import *
-from ..screens import *
+from . import *
 
 
 class MainMenu(Frame):
