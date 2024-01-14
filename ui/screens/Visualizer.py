@@ -11,7 +11,6 @@ from .util import *
 from ..components import *
 from ..styles import *
 
-
 LEFT_PAD = 50
 LINE_Y = 200
 TOP_PAD = 150
