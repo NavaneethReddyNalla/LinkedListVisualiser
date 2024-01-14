@@ -16,7 +16,7 @@ class App(tk.Tk):
         self.main_frame.pack(fill='both', expand=True, side='top')
 
         self.frames = {}
-        self.frame_keys = (MainMenu, Visualizer)
+        self.frame_keys = (MainMenu, Visualizer, Theme)
 
         self.create_frames()
         self.show_page(MainMenu)

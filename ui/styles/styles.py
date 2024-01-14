@@ -1,3 +1,3 @@
 from .presets import *
 
-PRIMARY_COLORS = DEFAULT
+PRIMARY_COLORS = {**DEFAULT}
