@@ -1,10 +1,20 @@
 import os
 import json
 
-from .presets import *
+from .presets import DEFAULT
 
 PRIMARY_COLORS = {**DEFAULT}
-HEADERS = ("frame", "canvas", "node", "data", "bg-label", "btn_text", "btn_primary", "btn_success", "btn_danger")
+HEADERS = {
+    "Background": "frame",
+    "Canvas Background": "canvas",
+    "Node": "node",
+    "Data": "data",
+    "Text Background": "bg-label",
+    "Button Text": "btn_text",
+    "Button": "btn_primary",
+    "Insert Button": "btn_success",
+    "Delete Button": "btn_danger",
+}
 PATH = "./ui/styles/current.json"
 
 if os.path.isfile(PATH):
