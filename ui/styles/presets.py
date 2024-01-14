@@ -18,3 +18,5 @@ DEFAULT = {
     "btn_success": "#44AF69",
     "btn_danger": "#F8333C",
 }
+
+CUSTOM = {**DEFAULT}
