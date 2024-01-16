@@ -17,9 +17,10 @@ HEADERS = {
 }
 PATH = "./ui/styles/current.json"
 
-if os.path.isfile(PATH):
-    with open(PATH, "r") as current:
-        PRIMARY_COLORS = json.load(current)
-else:
+try:
+    if os.path.isfile(PATH):
+        with open(PATH, "r") as current:
+            PRIMARY_COLORS = json.load(current)
+except FileNotFoundError as e:
     with open(PATH, "w") as current:
         json.dump(PRIMARY_COLORS, current)
